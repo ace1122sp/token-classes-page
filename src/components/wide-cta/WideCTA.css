@@ -1,0 +1,21 @@
+.c-WideCTA {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  text-align: right;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--light-text);
+  cursor: pointer;
+
+  & svg {
+    margin-left: 5px;
+  }
+}

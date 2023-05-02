@@ -1,7 +1,11 @@
 .c-App {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   width: 100%;
   position: relative;
   overflow-x: hidden;
+  background-color: #0f0f0f;
 }

@@ -27,14 +27,15 @@ const Card: React.FC<CardProps> = ({
   return (
     <div className={style['wrapper']}>
       <div className={style['content']}>
-        {/* Image */}
-        <img src={img} alt='token' />
+        <div className={style['img-wrapper']}>
+          <img src={img} alt='token' />
+        </div>
 
         <div className={style['ownership-section']}>
           {/* Section 1 */}
           <div className={style['ownership-section--left']}>
             <h6>{tokenClassName}</h6>
-            <p>{percentageOfOwnership}</p>
+            <h3>{percentageOfOwnership}</h3>
           </div>
           <div className={style['ownership-section--right']}>
             <p>{ownershipSectionLabel}</p>
@@ -43,29 +44,29 @@ const Card: React.FC<CardProps> = ({
 
         <div className={style['price-section']}>
           {/* Section 2 */}
-          <div>
+          <div className={style['price-section--price']}>
             <h6>{priceString}</h6>
           </div>
 
           {/* TODO Extract into a Component */}
-          <div>
-            <i>Icon</i>
+          <div className={style['benefits']}>
+            <span>💎</span>
             <p>Access to Fantium Discord Channel</p>
           </div>
 
-          <div>
-            <i>Icon 2</i>
+          <div className={style['benefits']}>
+            <span>👋</span>
             <p>Exclusive Workout Video</p>
           </div>
         </div>
 
-        <div>
+        <div className={style['cta-wrapper']}>
           <Button {...buttonProps} />
         </div>
       </div>
 
       {/* Tokens Number */}
-      <p>100 Tokens</p>
+      <p className={style['card-bottom-text']}>100 Tokens</p>
     </div>
   );
 };

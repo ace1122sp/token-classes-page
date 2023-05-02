@@ -14,11 +14,11 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => (
   <button
-    className={
+    className={`${className} ${
       variant === 'primary'
         ? `${className}--primary`
         : `${className}--secondary`
-    }
+    }`}
     onClick={onClick}
   >
     {label}
