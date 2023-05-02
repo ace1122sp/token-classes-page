@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import Card, { CardProps } from './components/Card';
 import { useProps } from './hooks';
+import Loading from '../../components/loading';
 
 const TokenClasses = () => {
   const { tokenClasses, isLoading } = useProps();
@@ -15,7 +16,7 @@ const TokenClasses = () => {
 
   return (
     <div>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loading />}
       {!isLoading && renderCards()}
     </div>
   );
