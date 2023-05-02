@@ -1,19 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { CardProps } from '../components/Card';
-
-// NOTE add an explanation why you did not use redux store for this data, and why you still decided to install redux
-export const mockCardData: CardProps = {
-  img: 'https://picsum.photos/800/600',
-  tokenClassName: 'Gold',
-  percentageOfOwnership: 0.0021,
-  ownershipSectionLabel: 'Ownership / Token',
-  priceString: '$ 500',
-  buttonProps: {
-    variant: 'primary',
-    label: 'CTA',
-    onClick: () => {},
-  },
-};
+import { fetchTokenClassItems } from '../tokenClassesAPI';
 
 export interface Props {
   isLoading: boolean;
@@ -24,11 +11,34 @@ const useProps = (): Props => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [tokenClasses, setTokenClasses] = useState<any[]>([]);
 
+  const formatAndStoreData = useCallback((data: object[]) => {
+    const formattedData = data?.map((item: any) => {
+      return {
+        id: item.id,
+        img: item.img_url,
+        tokenClassName: item.token_class_name,
+        percentageOfOwnership: item.percentage_of_ownership,
+        ownershipSectionLabel: 'Ownership / Token',
+        priceString: `$ ${Math.round(item.price_usd)}`,
+        buttonProps: {
+          variant: item.token_class_name === 'Gold' ? 'primary' : 'secondary', // NOTE this is just for demonstration purposes
+          label: item.token_class_name === 'Gold' ? 'BUY ON OPEN SEA' : 'BUY', // NOTE this is just for demonstration purposes
+          onClick: () => {},
+        },
+        tokenClassPerks: item.token_class_perks,
+        numberOfTheCollectionRemaining: item.number_of_the_collection_remaining,
+      };
+    });
+    setTokenClasses(formattedData);
+  }, []);
+
   useEffect(() => {
     setIsLoading(true);
-    setTokenClasses([mockCardData, mockCardData]);
-    setIsLoading(false);
-  }, []);
+    fetchTokenClassItems((data: []) => {
+      formatAndStoreData(data);
+      setIsLoading(false);
+    });
+  }, [formatAndStoreData]);
 
   return {
     tokenClasses,

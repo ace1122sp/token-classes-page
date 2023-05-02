@@ -13,7 +13,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: gray;
   background-color: var(--primary-color);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
 }
@@ -89,6 +88,7 @@
 .price-section {
   display: flex;
   flex-direction: column;
+  min-height: 215px;
   padding-top: 18px;
   padding-right: 32px;
   padding-left: 32px;
@@ -135,11 +135,11 @@
 }
 
 .cta-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   padding: 24px 0;
+  flex-grow: 1;
+  bottom: 0;
+  position: absolute;
+  margin: auto 0;
 }
 
 .card-bottom-text {

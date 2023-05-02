@@ -1,18 +1,9 @@
-import { mockCardData } from './hooks/useProps';
-
-interface MockResponse {
-  data: object[];
-}
-const mockResponse: MockResponse = {
-  data: [mockCardData, mockCardData],
-};
-
-export const fetchTokenClassItems = async () => {
+export const fetchTokenClassItems = async (cb: (data: []) => void) => {
   try {
-    // const response = await fetch(url);
-    // const data = await response.json();
-    // return data;
-    return mockResponse;
+    const urlObject = new URL(process.env.REACT_APP_API_URL!);
+    const response = await fetch(urlObject);
+    const data = await response.json();
+    cb(data?.data);
   } catch (error: any) {
     console.log('Error: ', error);
     throw error;

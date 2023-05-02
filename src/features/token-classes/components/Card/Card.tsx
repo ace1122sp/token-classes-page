@@ -1,29 +1,47 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Button from '../../../../components/button';
 import style from './Card.module.css';
 
 export interface CardProps {
+  id: number;
   img: string;
   tokenClassName: string;
   percentageOfOwnership: number;
   ownershipSectionLabel: string;
   priceString: string;
-  // icon: React.FC;
   buttonProps: {
     variant: 'primary' | 'secondary';
     label: string;
     onClick: () => void;
   };
+  tokenClassPerks: string[];
+  numberOfTheCollectionRemaining: number;
 }
 
+const staticPerksIcons: string[] = ['💎', '👋', '🎁', '🎉', '🎊', '🎈'];
+
 const Card: React.FC<CardProps> = ({
+  id,
   img,
   tokenClassName,
   percentageOfOwnership,
   ownershipSectionLabel,
   priceString,
   buttonProps,
+  tokenClassPerks,
+  numberOfTheCollectionRemaining,
 }) => {
+  const renderTokenClassPerks = useCallback(
+    () =>
+      tokenClassPerks?.map((item: string, i: number) => (
+        <div className={style['benefits']}>
+          <span>{staticPerksIcons[i]}</span>
+          <p>{item}</p>
+        </div>
+      )),
+    [tokenClassPerks]
+  );
+
   return (
     <div className={style['wrapper']}>
       <div className={style['content']}>
@@ -48,25 +66,18 @@ const Card: React.FC<CardProps> = ({
             <h6>{priceString}</h6>
           </div>
 
-          {/* TODO Extract into a Component */}
-          <div className={style['benefits']}>
-            <span>💎</span>
-            <p>Access to Fantium Discord Channel</p>
-          </div>
+          {renderTokenClassPerks()}
 
-          <div className={style['benefits']}>
-            <span>👋</span>
-            <p>Exclusive Workout Video</p>
+          <div className={style['cta-wrapper']}>
+            <Button {...buttonProps} />
           </div>
         </div>
 
-        <div className={style['cta-wrapper']}>
-          <Button {...buttonProps} />
-        </div>
+        {/* Tokens Number */}
       </div>
-
-      {/* Tokens Number */}
-      <p className={style['card-bottom-text']}>100 Tokens</p>
+      <p className={style['card-bottom-text']}>
+        {numberOfTheCollectionRemaining} Tokens
+      </p>
     </div>
   );
 };

@@ -11,18 +11,23 @@ const TokenClasses = () => {
   const renderCards = useCallback(
     () =>
       tokenClasses?.map((tokenClass: CardProps) => (
-        <Card {...tokenClass} key={tokenClass?.tokenClassName} />
+        <Card {...tokenClass} key={tokenClass?.id} />
       )),
     [tokenClasses]
   );
 
   return (
     <div className={style.wrapper}>
-      {isLoading && <Loading />}
-      {!isLoading && renderCards()}
-      <div className={style['cta-wrapper']}>
-        <WideCTA label='VALUATION METHOD' onClick={() => {}} />
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          {renderCards()}
+          <div className={style['cta-wrapper']}>
+            <WideCTA label='VALUATION METHOD' onClick={() => {}} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
