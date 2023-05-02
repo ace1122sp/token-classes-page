@@ -17,7 +17,9 @@ const useProps = (): Props => {
         id: item.id,
         img: item.img_url,
         tokenClassName: item.token_class_name,
-        percentageOfOwnership: item.percentage_of_ownership,
+        percentageOfOwnership: `${
+          Math.round(item.percentage_of_ownership * 10000) / 10000
+        }%`,
         ownershipSectionLabel: 'Ownership / Token',
         priceString: `$ ${Math.round(item.price_usd)}`,
         buttonProps: {
