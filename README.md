@@ -2,7 +2,7 @@
 
 Here's the markdown markup for the link:
 
-`[Live Website URL](https://chipper-kitsune-94462f.netlify.app/)`
+[Live Website URL](https://chipper-kitsune-94462f.netlify.app/)
 
 ## Description
 
