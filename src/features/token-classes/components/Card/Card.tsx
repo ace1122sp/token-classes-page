@@ -56,7 +56,9 @@ const Card: React.FC<CardProps> = ({
             <h3>{percentageOfOwnership}</h3>
           </div>
           <div className={style['ownership-section--right']}>
-            <p>{ownershipSectionLabel}</p>
+            <p className={style['ownership-section--right-text']}>
+              {ownershipSectionLabel}
+            </p>
           </div>
         </div>
 

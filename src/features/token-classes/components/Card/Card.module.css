@@ -72,17 +72,15 @@
   }
 }
 
-.ownership-section--right {
-  & p {
-    font-family: var(--default-font);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 140%;
-    color: var(--light-text);
-    opacity: 0.5;
-    margin: 0;
-  }
+.ownership-section--right-text {
+  font-family: var(--default-font);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: var(--light-text);
+  opacity: 0.5;
+  margin: 0;
 }
 
 .price-section {
