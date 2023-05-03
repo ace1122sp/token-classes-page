@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+## React App - Dashboard with Table and Login
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+## Description
 
-## Available Scripts
+This is a React app that features a simple page of cards with data populated from an API service. The state management is currently done only with hooks, but it can be easily refactored to use Redux (installed for eventual use). The app utilizes TypeScript for type checking. A possible alternative for this purpose could be PropTypes npm package.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+To install the app, clone this repository and run npm install.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+git clone https://github.com/ace1122sp/token-classes-page.git
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+cd token-classes-page
+```
 
-### `npm test`
+```
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Environment Variables
 
-### `npm run build`
+The following environment variable is required to run the app:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`REACT_APP_API_URL: The URL of the api service to fetch the token classes data. Example value: http://localhost:3002`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To start the app, run npm start. The app will be served at http://localhost:3000 by default.
 
-### `npm run eject`
+```
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Acknowledgements
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This app was built using Create React App, TypeScript template with support for redux state management.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Improvements & Future Work
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1 - implement Redux for state management as the app grows in complexity with new features.
+This will make the app more scalable and easier to maintain and it will bring the following benefits: - a single source of truth for the state - easier debugging - easier to test - better performance - better code organization
 
-## Learn More
+2 - add unit tests for the components
+This will make the app more robust and easier to maintain and it will bring the following benefits:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3 - To improve the current version of the app we could:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- add a `Valuation Method` page and make it accessible with already present `Valuation Method` button.
+- add handlers to cards' CTAs to make them functional
+- refactor `Card` component further by destructuring it into smaller components which could be reused in other parts of the app
+- initialize more robust styling system with more variables and mixins (would need to be discussed with the designer)
